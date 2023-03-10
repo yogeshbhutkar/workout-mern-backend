@@ -1,8 +1,10 @@
 const workoutModel = require("../models/workout")
 const mongoose = require("mongoose")
+const cors = require('cors')
 
 //get all workouts
 const getWorkouts = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Credentials", "true")
     const workouts = await workoutModel.find({}).sort({createdAt: -1})
     
     return res.status(200).json(workouts)
